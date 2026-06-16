@@ -100,13 +100,13 @@ export default function Header() {
           <div style={{ lineHeight: 1 }}>
             <span style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1rem", fontWeight: 300,
-              letterSpacing: "0.18em", color: "white", display: "block",
+              fontSize: "1.75rem", fontWeight: 600,
+              letterSpacing: "0.20em", color: "white", display: "block", lineHeight: 1,
             }}>RIMA</span>
             <span style={{
               fontFamily: "var(--font-inter), sans-serif",
-              fontSize: "0.4rem", letterSpacing: "0.24em",
-              color: "rgba(255,255,255,0.45)", display: "block", marginTop: "2px",
+              fontSize: "0.52rem", letterSpacing: "0.28em",
+              color: "rgba(255,255,255,0.70)", display: "block", marginTop: "2px",
             }}>AFRICA SAFARIS</span>
           </div>
         </Link>
@@ -239,8 +239,8 @@ export default function Header() {
             style={{ display: "flex", alignItems: "center", gap: "0.85rem", textDecoration: "none", marginBottom: "2rem" }}>
             <Image src="/logo.png" alt="Rima Africa Safaris" width={50} height={50} style={{ borderRadius: "50%", objectFit: "cover" }} />
             <div>
-              <span style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.2rem", fontWeight: 300, letterSpacing: "0.18em", color: "white", display: "block" }}>RIMA</span>
-              <span style={{ display: "block", fontFamily: "var(--font-inter)", fontSize: "0.4rem", letterSpacing: "0.24em", color: "rgba(255,255,255,0.4)" }}>AFRICA SAFARIS</span>
+              <span style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.75rem", fontWeight: 600, letterSpacing: "0.20em", color: "white", display: "block", lineHeight: 1 }}>RIMA</span>
+              <span style={{ display: "block", fontFamily: "var(--font-inter)", fontSize: "0.52rem", letterSpacing: "0.28em", color: "rgba(255,255,255,0.4)" }}>AFRICA SAFARIS</span>
             </div>
           </Link>
 

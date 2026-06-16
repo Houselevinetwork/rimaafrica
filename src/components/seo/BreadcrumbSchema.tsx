@@ -1,5 +1,4 @@
-interface Crumb { name: string; url: string }
-
+interface Crumb { name: string; url: string; }
 export default function BreadcrumbSchema({ crumbs }: { crumbs: Crumb[] }) {
   const schema = {
     "@context": "https://schema.org",
@@ -11,10 +10,5 @@ export default function BreadcrumbSchema({ crumbs }: { crumbs: Crumb[] }) {
       item: c.url,
     })),
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }

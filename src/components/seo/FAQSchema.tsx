@@ -1,19 +1,13 @@
-interface FAQItem { question: string; answer: string }
-
-export default function FAQSchema({ items }: { items: FAQItem[] }) {
+interface FAQ { question: string; answer: string; }
+export default function FAQSchema({ faqs }: { faqs: FAQ[] }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: items.map(item => ({
+    mainEntity: faqs.map(f => ({
       "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }

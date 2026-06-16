@@ -1,39 +1,57 @@
 "use client";
 
+import { useState } from "react";
+
 export default function NewsletterForm() {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    if (!email) return;
-    try {
-      await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      form.reset();
-      alert("Subscribed! Thank you.");
-    } catch {
-      alert("Something went wrong. Please try again.");
-    }
+    if (!email.trim()) return;
+    // Open mailto — works without any API key
+    const subject = encodeURIComponent("Newsletter Subscription — Rima Africa Safaris");
+    const body = encodeURIComponent(
+      `Hello Rima Africa Safaris,\n\nPlease add me to your safari inspiration newsletter.\n\nEmail: ${email}\n\nThank you.`
+    );
+    window.open(`mailto:safaris@rimaafrica.com?subject=${subject}&body=${body}`, "_blank");
+    setSent(true);
+    setEmail("");
+    setTimeout(() => setSent(false), 4000);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
       <input
         type="email"
-        name="email"
-        placeholder="Your email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        placeholder="your@email.com"
         required
-        className="flex-1 bg-transparent border border-white border-opacity-25 text-white text-xs px-3 py-2 outline-none focus:border-rima-gold placeholder-white placeholder-opacity-30 transition-colors"
+        style={{
+          background: "rgba(255,255,255,0.07)",
+          border: "1px solid rgba(255,255,255,0.15)",
+          color: "white", padding: "0.6rem 0.85rem",
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: "0.78rem", outline: "none", width: "100%",
+          boxSizing: "border-box",
+        }}
       />
-      <button
-        type="submit"
-        className="btn-primary text-[0.65rem] py-2 px-3 whitespace-nowrap"
-      >
-        Subscribe
+      <button type="submit" style={{
+        background: "var(--rima-gold)", color: "white", border: "none",
+        padding: "0.6rem 1rem", cursor: "pointer",
+        fontFamily: "var(--font-inter), sans-serif",
+        fontSize: "0.62rem", fontWeight: 500, letterSpacing: "0.12em",
+        transition: "background 0.2s",
+        width: "100%",
+      }}>
+        {sent ? "✓ OPENING YOUR EMAIL..." : "SUBSCRIBE"}
       </button>
+      {sent && (
+        <p style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
+          Your email client will open with a pre-filled message to safaris@rimaafrica.com
+        </p>
+      )}
     </form>
   );
 }

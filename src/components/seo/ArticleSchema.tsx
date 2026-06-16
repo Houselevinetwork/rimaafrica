@@ -1,23 +1,18 @@
-interface Props {
-  slug: string; title: string; description: string;
-  datePublished: string; image?: string;
-}
-
-export default function ArticleSchema({ slug, title, description, datePublished, image }: Props) {
+interface Props { title: string; description: string; url: string; image?: string; datePublished: string; dateModified?: string; }
+export default function ArticleSchema({ title, description, url, image, datePublished, dateModified }: Props) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `https://rimaafrica.com/blog/${slug}`,
     headline: title,
     description,
-    url: `https://rimaafrica.com/blog/${slug}`,
+    url,
+    ...(image && { image: { "@type": "ImageObject", url: image } }),
     datePublished,
-    dateModified: datePublished,
-    image: image || "https://rimaafrica.com/images/og/og-default.jpg",
+    dateModified: dateModified || datePublished,
     author: {
       "@type": "Organization",
-      "@id": "https://rimaafrica.com/#organization",
       name: "Rima Africa Safaris",
+      url: "https://rimaafrica.com",
     },
     publisher: {
       "@type": "Organization",
@@ -25,16 +20,7 @@ export default function ArticleSchema({ slug, title, description, datePublished,
       name: "Rima Africa Safaris",
       logo: { "@type": "ImageObject", url: "https://rimaafrica.com/logo.png" },
     },
-    isPartOf: {
-      "@type": "Blog",
-      name: "The Rima Africa Journal",
-      url: "https://rimaafrica.com/blog",
-    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }

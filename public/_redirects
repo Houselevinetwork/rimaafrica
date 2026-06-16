@@ -1,0 +1,4 @@
+/safaris/*   /itineraries/:splat   301
+/tours/*     /itineraries/:splat   301
+/packages/*  /itineraries/:splat   301
+/home        /                     301

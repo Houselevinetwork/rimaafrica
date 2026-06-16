@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
-import { DESTINATIONS, ITINERARIES } from "@/data/destinations";
-import { r2Url } from "@/lib/utils";
+import { ITINERARIES } from "@/data/destinations";
+import { heroMedia } from "@/lib/media";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
-const R2 = process.env.NEXT_PUBLIC_R2_URL || "";
-
 export const metadata: Metadata = {
-  title: "Safari Journey Inspirations | Trip Ideas",
-  description: "Get inspired by our curated safari itineraries. Browse journey ideas by destination across Africa and the Indian Ocean Islands.",
+  title: "Journey Ideas | Safari Inspiration from Rima Africa",
+  description: "Let the landscape choose for you. Browse safari ideas across East Africa, the Indian Ocean and Southern Africa, then make it yours.",
   alternates: { canonical: "https://rimaafrica.com/trip-inspirations" },
 };
 
@@ -17,80 +15,41 @@ export default function TripInspirationsPage() {
   return (
     <>
       <PageHero
-        title="Safari"
-        titleEm="inspirations"
-        subtitle="Get inspired by our curated itineraries. Every journey is a starting point — none of them are fixed."
-        bgImage={R2 ? `${R2}/ui/inspirations-hero.jpg` : ""}
-        overlayOpacity={0.5}
+        title="Let the landscape"
+        titleEm="choose for you."
+        bgVideo={heroMedia.inspirations.video}
+        bgImage={heroMedia.inspirations.image}
+        overlayOpacity={0.42}
         breadcrumbs={[
           { label: "Homepage", href: "/" },
-          { label: "Journey Inspirations" },
+          { label: "Journey Ideas" },
         ]}
-        badge="JOURNEY IDEAS"
       />
-
-      {/* Destination circles — like Tatis */}
-      <section className="section-wrapper" style={{ background: "var(--rima-cream)" }}>
+      <section className="section-wrapper">
         <div className="content-width">
-          <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap", justifyContent: "center" }}>
-            {DESTINATIONS.map(dest => {
-              const count = ITINERARIES.filter(i => i.destination.toLowerCase() === dest.name.toLowerCase()).length || 5;
-              return (
-                <a key={dest.slug} href={`#${dest.slug}`}
-                  style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", textDecoration: "none", cursor: "pointer" }}>
-                  <div style={{
-                    width: 72, height: 72, borderRadius: "50%",
-                    backgroundImage: `url(${r2Url(dest.heroImage)})`,
-                    backgroundSize: "cover", backgroundPosition: "center",
-                    background: "var(--rima-jungle-dark)",
-                  }} />
-                  <p style={{ fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--rima-dark)" }}>
-                    {dest.name.toUpperCase()}
-                  </p>
-                  <p style={{ fontSize: "0.6rem", color: "var(--rima-gray)" }}>{count} journeys</p>
-                </a>
-              );
-            })}
+          <p className="eyebrow mb-4" style={{ color: "var(--rima-gold)" }}>JOURNEY IDEAS</p>
+          <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)", fontWeight: 300, marginBottom: "3rem" }}>
+            Somewhere to <em style={{ fontStyle: "italic", color: "var(--rima-gold)" }}>begin</em>
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: "2rem" }}>
+            {ITINERARIES.map(it => (
+              <Link key={it.slug} href={`/itineraries/${it.slug}`}
+                style={{ display: "block", textDecoration: "none" }}>
+                <div style={{ aspectRatio: "4/3", background: "var(--rima-jungle-dark)", marginBottom: "1rem" }} />
+                <p style={{ fontSize: "0.58rem", letterSpacing: "0.16em", color: "var(--rima-gold)", marginBottom: "0.35rem" }}>
+                  {it.days} DAYS · {it.destination.toUpperCase()}
+                </p>
+                <h3 style={{ fontSize: "1.2rem", fontWeight: 300, color: "var(--rima-dark)", marginBottom: "0.3rem" }}>
+                  {it.title}
+                </h3>
+                <p style={{ fontSize: "0.78rem", color: "var(--rima-gray)", lineHeight: 1.65 }}>
+                  {it.bestFor}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* Itineraries by destination */}
-      {DESTINATIONS.map(dest => {
-        const its = ITINERARIES.filter(i => i.destination.toLowerCase() === dest.name.toLowerCase());
-        if (its.length === 0) return null;
-        return (
-          <section key={dest.slug} id={dest.slug} className="section-wrapper">
-            <div className="content-width">
-              <p className="eyebrow mb-3" style={{ color: "var(--rima-gold)" }}>{dest.region?.toUpperCase()}</p>
-              <h2 className="font-serif font-light mb-8" style={{ fontSize: "2rem" }}>
-                {dest.name} <em>journeys</em>
-              </h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: "1.75rem" }}>
-                {its.map(it => (
-                  <Link key={it.slug} href={`/itineraries/${it.slug}`}
-                    style={{ display: "block", textDecoration: "none" }}>
-                    <div style={{
-                      aspectRatio: "3/2", overflow: "hidden",
-                      backgroundImage: `url(${r2Url(it.image)})`,
-                      backgroundSize: "cover", backgroundPosition: "center",
-                      background: "var(--rima-jungle-dark)",
-                      marginBottom: "1rem",
-                    }} />
-                    <p style={{ fontSize: "0.58rem", letterSpacing: "0.14em", color: "var(--rima-gold)", marginBottom: "0.3rem" }}>
-                      {it.days} DAYS
-                    </p>
-                    <h3 className="font-serif font-light" style={{ fontSize: "1.1rem", color: "var(--rima-dark)" }}>
-                      {it.title}
-                    </h3>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })}
-
       <WhatsAppFloat />
     </>
   );

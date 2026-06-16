@@ -6,12 +6,18 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/booking/", "/_next/"],
+        disallow: ["/api/", "/_next/", "/static/"],
       },
-      {
-        userAgent: ["GPTBot", "ChatGPT-User", "CCBot", "anthropic-ai", "Claude-Web", "Bytespider"],
-        disallow: "/",
-      },
+      // Block AI scrapers
+      { userAgent: "GPTBot", disallow: "/" },
+      { userAgent: "ChatGPT-User", disallow: "/" },
+      { userAgent: "Google-Extended", disallow: "/" },
+      { userAgent: "CCBot", disallow: "/" },
+      { userAgent: "anthropic-ai", disallow: "/" },
+      { userAgent: "Claude-Web", disallow: "/" },
+      { userAgent: "Omgilibot", disallow: "/" },
+      { userAgent: "FacebookBot", allow: "/" },
+      { userAgent: "Twitterbot", allow: "/" },
     ],
     sitemap: "https://rimaafrica.com/sitemap.xml",
     host: "https://rimaafrica.com",

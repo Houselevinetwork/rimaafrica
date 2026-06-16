@@ -755,3 +755,63 @@ body, p, span, a, button, input, textarea, select {
 .eyebrow, .btn-primary, .btn-outline {
   font-weight: 500 !important;
 }
+/* ═══════════════════════════════════════════════════════════
+   LUXURY SMOOTH SCROLL
+   ═══════════════════════════════════════════════════════════ */
+
+/* Native smooth scroll with momentum feel */
+html {
+  scroll-behavior: smooth;
+  /* Ensure sections always stack correctly */
+  overflow-x: hidden;
+}
+
+/* ── Z-index hierarchy ──────────────────────────────────────
+   Layer 0:   hero section background, regular page sections
+   Layer 100: fixed header (nav)
+   Layer 99999: search dropdown (position:fixed, above all)
+   ──────────────────────────────────────────────────────── */
+
+/* Hero MUST be z-index:0 so the next section scrolls ON TOP of it naturally */
+.rima-hero { z-index: 0 !important; }
+
+/* All regular sections — sit above the hero when scrolling over it */
+main > *:not(:first-child) {
+  position: relative;
+  z-index: 1;
+}
+
+/* White sections get a background so they truly cover the hero */
+section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--background, white);
+}
+
+/* ── Scroll behaviour for horizontal carousels ─────────────
+   Momentum scrolling on iOS, smooth on all */
+.swipe-carousel,
+.region-card-row {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.swipe-carousel > *,
+.region-card-row > * {
+  scroll-snap-align: start;
+}
+
+/* ── Anchor scroll offset — accounts for fixed nav ─────────
+   When clicking #east-africa etc, the section won't hide behind the nav */
+[id] {
+  scroll-margin-top: calc(var(--nav-h, 64px) + 1rem);
+}
+
+/* ── Page transitions — subtle fade on load ─────────────── */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+main {
+  animation: pageFadeIn 0.45s ease forwards;
+}

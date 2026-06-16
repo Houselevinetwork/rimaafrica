@@ -40,7 +40,7 @@ export default function WhyUsSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="section-wrapper" style={{ background: "var(--rima-cream)" }}>
+    <section className="section-wrapper" style={{ background: "var(--rima-cream)", position: "relative", zIndex: 1 }}>
       <div className="content-width">
         <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
           <span className="eyebrow" style={{ color: "var(--rima-gray)", display: "block", marginBottom: "1rem" }}>
