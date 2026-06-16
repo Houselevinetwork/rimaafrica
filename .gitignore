@@ -1,8 +1,4 @@
-node_modules/
-.next/
+﻿.next
+node_modules
 .env.local
-.env*.local
-out/
-*.log
-.DS_Store
-Thumbs.db
+.env
