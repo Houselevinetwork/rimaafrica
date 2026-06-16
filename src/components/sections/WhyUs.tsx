@@ -1,67 +1,136 @@
-import { WHY_US } from "@/data/destinations";
-import { r2Url } from "@/lib/utils";
+"use client";
+
+import { useState } from "react";
+
+const WHY_US = [
+  {
+    number: "01",
+    title: "Born at the source",
+    description: "Our team is Nairobi-raised and field-tested. We know which guides hold your attention at 5am, which camps earn their rates, and which seasons reward patience.",
+    image: "",
+  },
+  {
+    number: "02",
+    title: "No templates. Ever.",
+    description: "We have never sent two clients the same itinerary. Every journey opens with a conversation about who you are, what moves you, and what you have already seen.",
+    image: "",
+  },
+  {
+    number: "03",
+    title: "Private access, always",
+    description: "We work exclusively with owner-run camps and independent guides. The concessions we use are not listed on booking sites. They are introductions — and they are ours to make.",
+    image: "",
+  },
+  {
+    number: "04",
+    title: "Conservation is the journey",
+    description: "Every camp we recommend operates a conservation model. Your fees fund anti-poaching patrols, school roofs, and wildlife corridors.",
+    image: "",
+  },
+  {
+    number: "05",
+    title: "A human answers",
+    description: "No chatbots. No ticket numbers. You will have a direct line to the specialist who designed your trip — before departure, during it, and if you need us at 3am.",
+    image: "",
+  },
+];
 
 export default function WhyUs() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section style={{ background:"#F9F8F3", padding:"var(--section-py) 0" }}>
-      <div className="max-w-[var(--site-max)] mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-24 px-[var(--section-px)]">
-          <p className="eyebrow mb-4">WHY US</p>
-          <h2 className="font-serif font-light" style={{ fontSize:"clamp(1.8rem,3vw,2.53rem)", color:"var(--rima-dark)" }}>
-            Why travel with <em style={{ color:"var(--rima-gold)" }}>us</em>
+    <section style={{ background: "var(--rima-cream)", padding: "5rem 0", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1.5rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+          <span style={{
+            fontFamily: "var(--font-inter), sans-serif",
+            fontSize: "10px", fontWeight: 700,
+            letterSpacing: "3px", color: "#666666",
+            textTransform: "uppercase", display: "block", marginBottom: "1rem",
+          }}>
+            THE RIMA DIFFERENCE
+          </span>
+          <h2 style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontWeight: 300,
+            fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
+            color: "var(--rima-dark)",
+          }}>
+            Five reasons clients{" "}
+            <em style={{ color: "var(--rima-gold)", fontStyle: "italic" }}>return</em>
           </h2>
-          <p className="font-sans font-light italic mt-5 max-w-sm mx-auto leading-[1.78]"
-            style={{ fontSize:"0.869rem", color:"var(--rima-gray)" }}>
-            At Rima Africa, we believe that luxury is not just about opulence � it is about creating
-            one-of-a-kind experiences that bring people together and make the world a better place.
-          </p>
         </div>
 
-        {/* Cards row � full bleed */}
-        <div className="px-6">
-          <div className="flex gap-0 items-start min-h-[400px]">
-            {WHY_US.map((item, i) => {
-              const isDown = i % 2 === 0; // cards 1,3,5 offset down
-              const cardH  = isDown ? 357 : 378;
-              return (
-                <div key={item.number} className="flex-1 pr-[30px]"
-                  style={{ marginTop: isDown ? "36px" : "0" }}>
-                  <div className="why-card" style={{ width:"304.58px", height:`${cardH}px` }}>
-                    {/* Image */}
-                    <div className="w-full bg-cover bg-center bg-rima-jungle-dark"
-                      style={{ height:"171.61px",
-                        backgroundImage:`url(${r2Url(item.image)})` }} />
-                    {/* Number */}
-                    <div className="flex items-center justify-between mt-2">
-                      <span className="font-sans font-light text-sm relative" style={{ color:"var(--rima-gray)" }}>
-                        N<sup style={{ fontSize:"0.625rem", textDecoration:"underline" }}>o</sup>{item.number}
-                      </span>
-                      <span className="font-sans font-light text-xs" style={{ color:"var(--rima-gray)" }}>
-                        {item.total}
-                      </span>
-                    </div>
-                    {/* Title */}
-                    <p className="font-sans font-light text-center mt-1"
-                      style={{ fontSize:"1.28rem", color:"var(--rima-dark)", lineHeight:1.46 }}>
-                      {item.title}
-                    </p>
-                    {/* Description */}
-                    <p className="font-sans font-normal text-center"
-                      style={{ fontSize:"0.712rem", color:"var(--rima-gray)", lineHeight:1.84 }}>
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        <div style={{
+          display: "flex",
+          gap: "1.25rem",
+          overflowX: "auto",
+          paddingBottom: "0.5rem",
+          scrollbarWidth: "none",
+        }}>
+          {WHY_US.map((item, i) => (
+            <div
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                width: "clamp(260px, 72vw, 300px)",
+                background: "white",
+                padding: "1.5rem",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
+                flexShrink: 0,
+                cursor: "pointer",
+                borderTop: active === i ? "2px solid var(--rima-gold)" : "2px solid transparent",
+                transition: "border-color 0.2s",
+              }}
+            >
+              <p style={{
+                fontSize: "0.58rem",
+                fontWeight: 300,
+                color: "var(--rima-gray)",
+                marginBottom: "0.6rem",
+              }}>
+                N<sup>o</sup> {item.number} / 05
+              </p>
+              <h3 style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontWeight: 300,
+                fontSize: "1.2rem",
+                color: "var(--rima-dark)",
+                marginBottom: "0.6rem",
+              }}>
+                {item.title}
+              </h3>
+              <p style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontSize: "0.78rem",
+                color: "var(--rima-gray)",
+                lineHeight: 1.72,
+                fontWeight: 300,
+              }}>
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
 
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-12">
-            <div className="w-2 h-2 rounded-full" style={{ background:"var(--rima-gold)" }} />
-            <div className="w-2 h-2 rounded-full bg-black opacity-20" />
-          </div>
+        <style>{`
+          div[style*="overflowX"]::-webkit-scrollbar { display: none; }
+        `}</style>
+
+        {/* Dots */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1.25rem" }}>
+          {WHY_US.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                width: 7, height: 7, borderRadius: "50%",
+                background: i === active ? "var(--rima-gold)" : "rgba(0,0,0,0.15)",
+                cursor: "pointer",
+                transition: "background 0.2s",
+              }}
+            />
+          ))}
         </div>
       </div>
     </section>

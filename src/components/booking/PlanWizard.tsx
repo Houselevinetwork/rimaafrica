@@ -27,7 +27,7 @@ export default function PlanWizard() {
 
   const toggleDest = (slug: string) => {
     const c = form.destinations || [];
-    upd("destinations", c.includes(slug) ? c.filter(d => d !== slug) : [...c, slug]);
+    upd("destinations", c.includes(slug) ? c.filter((d: string) => d !== slug) : [...c, slug]);
   };
 
   const handleSubmit = async () => {
@@ -238,8 +238,8 @@ export default function PlanWizard() {
                 return (
                   <button key={m} type="button"
                     onClick={() => {
-                      const c = form.preferredContact||[];
-                      upd("preferredContact", sel ? c.filter(x => x!==m) : [...c,m]);
+                      const c = (form.preferredContact || []) as string[];
+                      upd("preferredContact", sel ? c.filter((x: string) => x!==m) : [...c,m]);
                     }}
                     className={cn("px-4 py-2 capitalize text-sm border transition-colors",
                       sel ? "border-rima-jungle bg-rima-jungle text-white" : "border-rima-cream-dark hover:border-rima-jungle")}>
