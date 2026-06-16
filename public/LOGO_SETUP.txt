@@ -1,0 +1,12 @@
+LOGO SETUP INSTRUCTIONS
+=======================
+1. Copy your logo.png file into:
+   C:\projects\rimaafrica\public\logo.png
+
+2. Also copy it as favicon.ico:
+   C:\projects\rimaafrica\public\favicon.ico
+
+   (or use a PNG favicon — see layout.tsx below)
+
+The logo file has been referenced in Header.tsx and layout.tsx.
+Once you place the file in public/, the logo and favicon will appear.

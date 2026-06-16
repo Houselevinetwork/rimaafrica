@@ -1,0 +1,757 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --rima-dark:         #1a1a1a;
+  --rima-jungle:       #2d4a35;
+  --rima-jungle-light: #3d6147;
+  --rima-jungle-dark:  #1e3326;
+  --rima-gold:         #c9a84c;
+  --rima-gold-light:   #d9bc76;
+  --rima-gold-dark:    #a8882e;
+  --rima-cream:        #f5f0e8;
+  --rima-cream-dark:   #ede8de;
+  --rima-earth:        #8b7355;
+  --rima-teal:         #2a7b8c;
+  --rima-gray:         #666666;
+  --rima-white:        #ffffff;
+  --section-px: clamp(1.5rem, 8vw, 8.75rem);
+  --section-py: clamp(3rem, 6vw, 6rem);
+  --content-max: 1020px;
+  --site-max: 1440px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-inter);
+  background: var(--rima-white);
+  color: var(--rima-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-cormorant);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--rima-cream); }
+::-webkit-scrollbar-thumb { background: var(--rima-jungle); border-radius: 3px; }
+::selection { background: var(--rima-gold); color: var(--rima-dark); }
+
+@layer utilities {
+  .section-wrapper {
+    width: 100%;
+    max-width: var(--site-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-px);
+    padding-right: var(--section-px);
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+  }
+
+  .content-width {
+    width: 100%;
+    max-width: var(--content-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-inter);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1875rem;
+    color: var(--rima-gray);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .img-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+  }
+
+  .hero-video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+  .hero-video-container video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .no-scroll { overflow: hidden; }
+
+  .continent-card img,
+  .continent-card .bg-cover {
+    transition: transform 0.7s cubic-bezier(0.33,1,0.68,1);
+  }
+  .continent-card:hover img,
+  .continent-card:hover .bg-img {
+    transform: scale(1.06);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background-color: var(--rima-gold);
+    color: var(--rima-dark);
+    font-family: var(--font-inter);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rima-gold);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background-color: var(--rima-gold-dark); border-color: var(--rima-gold-dark); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background-color: transparent;
+    color: var(--rima-white);
+    font-family: var(--font-inter);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.6);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-outline:hover { background-color: rgba(255,255,255,0.12); border-color: var(--rima-white); }
+
+  .btn-jungle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background-color: transparent;
+    color: var(--rima-jungle);
+    font-family: var(--font-inter);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rima-jungle);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-jungle:hover { background-color: var(--rima-jungle); color: var(--rima-white); }
+
+  .nav-link {
+    font-family: var(--font-inter);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--rima-white);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.25s ease;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: var(--rima-gold);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+  .nav-link:hover { color: var(--rima-gold-light); }
+
+  .why-card {
+    background: white;
+    box-shadow: 0 0 9px 5px rgba(209,209,209,0.25);
+    padding: 0.9375rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4688rem;
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem; right: 1.5rem;
+    z-index: 999;
+    width: 3.25rem; height: 3.25rem;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-decoration: none;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37,211,102,0.55); }
+
+  .explore-circle {
+    width: 15rem; height: 15rem;
+    border: 1px solid rgba(255,255,255,0.75);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.35s ease, border-color 0.35s ease;
+    text-decoration: none;
+  }
+  .explore-circle:hover { background-color: rgba(255,255,255,0.12); border-color: var(--rima-gold); }
+
+  .dest-tab {
+    font-family: var(--font-inter);
+    font-size: 0.75rem;
+    color: var(--rima-gray);
+    white-space: nowrap;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .dest-tab:hover { color: var(--rima-dark); border-bottom-color: var(--rima-gold); }
+}
+
+/* ── Itinerary and type page additions ── */
+.btn-outline-white {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.75rem 2rem; border: 1px solid white; color: white;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+  font-family: var(--font-inter); text-transform: uppercase; transition: all 0.2s;
+}
+.btn-outline-white:hover { background: white; color: var(--rima-jungle); }
+
+.btn-outline-dark {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.75rem 2rem; border: 1px solid var(--rima-dark); color: var(--rima-dark);
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+  font-family: var(--font-inter); text-transform: uppercase; transition: all 0.2s;
+}
+.btn-outline-dark:hover { background: var(--rima-dark); color: white; }
+
+/* Details summary reset */
+details summary::-webkit-details-marker { display: none; }
+details[open] summary .shrink-0 { content: '−'; }
+/* ── GLOBAL GOLD ITALIC RULE ──────────────────────────────
+   Every em or italic word inside a heading = rima-gold.
+   This covers hero, section titles, page titles everywhere. */
+h1 em, h2 em, h3 em,
+.font-serif em,
+.section-title em,
+[class*="font-serif"] em {
+  color: var(--rima-gold);
+  font-style: italic;
+}
+
+/* Jungle green specifically for the word "Africa" in hero */
+.hero-africa-word {
+  color: var(--rima-jungle);
+  font-style: normal;
+}
+
+/* Hero section full-viewport fix */
+.hero-fullscreen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Continent card hover */
+.continent-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.continent-card:hover { transform: scale(1.02); }
+.continent-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  transition: opacity 0.3s;
+}
+.continent-card:hover::after { opacity: 0.85; }
+
+/* Search bar hero style */
+.hero-search {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
+  min-width: 380px;
+  max-width: 520px;
+  width: 100%;
+  transition: background 0.2s, border-color 0.2s;
+}
+.hero-search:focus-within {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.6);
+}
+.hero-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 0.8125rem;
+  font-family: var(--font-inter);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex: 1;
+}
+.hero-search input::placeholder { color: rgba(255,255,255,0.5); }
+.hero-search button { color: rgba(255,255,255,0.8); }
+.hero-search button:hover { color: white; }
+
+/* Plan wizard steps */
+.wizard-step {
+  display: none;
+}
+.wizard-step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* ── DVH hero fix ──────────────────────────────────────────
+   100dvh = dynamic viewport height.
+   Unlike 100vh, dvh excludes the OS taskbar and browser
+   chrome (address bar on mobile). This means the hero is
+   always exactly the visible screen — nothing hidden behind
+   the Windows taskbar or iOS Safari toolbar.
+   Supported: Chrome 108+, Safari 15.4+, Firefox 101+.
+   Fallback (older browsers): 100vh via @supports not rule. */
+.hero-section {
+  min-height: 100dvh;
+}
+@supports not (min-height: 100dvh) {
+  .hero-section {
+    min-height: 100vh;
+  }
+}
+
+/* ── Minimal footer responsive ── */
+@media (max-width: 768px) {
+  .flex-col-on-mobile {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+/* ── Page hero — used on all interior pages ── */
+.page-hero {
+  min-height: 100dvh;
+}
+@supports not (min-height: 100dvh) {
+  .page-hero { min-height: 100vh !important; }
+}
+
+/* Mobile: ensure hero fills visible screen exactly */
+@media (max-width: 768px) {
+  .page-hero {
+    min-height: -webkit-fill-available;
+  }
+}
+/* ================================================================
+   RIMA AFRICA — MOBILE FIRST SYSTEM
+   Nav height variable used everywhere for accurate hero sizing
+   ================================================================ */
+
+:root {
+  --nav-h: 64px;            /* Header height */
+  --rima-jungle: #2D4A35;
+  --rima-jungle-dark: #1E3326;
+  --rima-gold: #C9A84C;
+  --rima-cream: #F5F0E8;
+  --rima-cream-dark: #E8E3D9;
+  --rima-dark: #1A1A1A;
+  --rima-gray: #666666;
+  --rima-earth: #8B7355;
+}
+
+/* ── HERO HEIGHT SYSTEM ──────────────────────────────────────
+   Desktop: calc(100dvh - var(--nav-h))
+     → fills exactly the visible viewport below the nav
+     → taskbar is excluded by dvh
+     → no content clipped behind taskbar ever again
+
+   Mobile: 55dvh
+     → Matches Tatis pattern (hero is ~half screen, content
+       below is immediately visible on first load)
+     → On a 823px screen: 55dvh ≈ 453px — same as Flutter
+       continent card height of 460px
+
+   Tablet (768px+): 60dvh — between mobile and desktop feel
+   ──────────────────────────────────────────────────────── */
+
+/* Homepage hero — desktop gets full minus nav */
+.hero-section {
+  min-height: 55dvh;
+}
+
+/* Interior page hero */
+.page-hero {
+  min-height: 55dvh;
+}
+
+/* Desktop overrides */
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: calc(100dvh - var(--nav-h));
+  }
+  .page-hero {
+    min-height: calc(100dvh - var(--nav-h));
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-section {
+    min-height: 60dvh;
+  }
+  .page-hero {
+    min-height: 60dvh;
+  }
+}
+
+/* Fallback for browsers without dvh support */
+@supports not (min-height: 100dvh) {
+  .hero-section {
+    min-height: 55vh;
+  }
+  .page-hero {
+    min-height: 55vh;
+  }
+  @media (min-width: 1024px) {
+    .hero-section {
+      min-height: calc(100vh - var(--nav-h));
+    }
+    .page-hero {
+      min-height: calc(100vh - var(--nav-h));
+    }
+  }
+}
+
+/* iOS Safari specific fix */
+@supports (-webkit-touch-callout: none) {
+  .hero-section,
+  .page-hero {
+    min-height: -webkit-fill-available;
+  }
+  @media (min-width: 1024px) {
+    .hero-section,
+    .page-hero {
+      min-height: calc(100vh - var(--nav-h));
+    }
+  }
+}
+
+/* ── MOBILE CONTINENT CARDS (homepage, stacked) ── */
+.mobile-continent-card {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+.mobile-continent-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.mobile-continent-card:hover img { transform: scale(1.03); }
+.mobile-continent-card .card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 60%);
+}
+.mobile-continent-card .card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  gap: 0.75rem;
+  z-index: 2;
+}
+.mobile-continent-card .card-label {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.1;
+}
+.mobile-continent-card .card-pill {
+  border: 1px solid white;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* ── DESKTOP CONTINENT CARDS (horizontal, bottom of hero) ── */
+.desktop-continent-card {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+.desktop-continent-card:hover { transform: scale(1.02); }
+.desktop-continent-card img { transition: transform 0.5s ease; }
+.desktop-continent-card:hover img { transform: scale(1.05); }
+
+/* ── SECTION WRAPPERS ── */
+.section-wrapper { padding: 3rem 1.25rem; }
+.content-width { max-width: 1280px; margin: 0 auto; }
+@media (min-width: 768px) {
+  .section-wrapper { padding: 4rem 2rem; }
+}
+@media (min-width: 1024px) {
+  .section-wrapper { padding: 5rem 3rem; }
+}
+
+/* ── EYEBROW ── */
+.eyebrow {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--rima-gray);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* ── GRID RESPONSIVE ── */
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background: var(--rima-gold);
+  color: white;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-outline {
+  border: 1px solid currentColor;
+  color: var(--rima-dark);
+  padding: 0.85rem 2rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+/* ── FLEX COL ON MOBILE ── */
+.flex-col-on-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .flex-col-on-mobile {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ── GOLD ITALIC GLOBAL ── */
+h1 em, h2 em, h3 em,
+.font-serif em,
+[class*="font-serif"] em {
+  color: var(--rima-gold);
+  font-style: italic;
+}
+
+/* ── FOOTER ── */
+@media (max-width: 767px) {
+  .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ── SWIPE CAROUSEL (mobile WhyUs, Blog) ── */
+.swipe-carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  display: flex;
+  gap: 1rem;
+}
+.swipe-carousel::-webkit-scrollbar { display: none; }
+.swipe-carousel > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+/* ── HIDE SWIPE CAROUSEL SCROLLBAR COMPLETELY ── */
+.swipe-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.swipe-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── LUXURY WHATSAPP BUTTON ── */
+.rima-wa-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--rima-jungle-dark);
+  border: 1.5px solid var(--rima-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+.rima-wa-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.45);
+}
+.rima-wa-btn img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.rima-wa-btn .wa-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  background: #25D366;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── NAV gap fix backup ── */
+main { padding-top: var(--nav-h, 64px); }
+/* Footer grid responsive */
+@media (max-width: 767px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .footer-grid > div:last-child {
+    align-items: flex-start !important;
+  }
+}
+/* ── FONT WEIGHT ENFORCEMENT ────────────────────────────────
+   Tatis uses fontWeight w300 (thin/light) throughout.
+   Flutter confirms: fontSize 38.5–79.6px, fontWeight w300.
+   This overrides any accidental w400/w500 on headings. */
+h1, h2, h3 {
+  font-weight: 300 !important;
+}
+.font-serif, [class*="font-serif"] {
+  font-weight: 300;
+}
+
+/* Inter body text: w300-w400 only */
+body, p, span, a, button, input, textarea, select {
+  font-weight: 300;
+}
+/* Exceptions: eyebrow labels, CTA buttons stay w500-w700 */
+.eyebrow, .btn-primary, .btn-outline {
+  font-weight: 500 !important;
+}
