@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
