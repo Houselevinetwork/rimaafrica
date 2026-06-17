@@ -2,3 +2,10 @@ name = "rimaafrica"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+NEXT_PUBLIC_R2_URL = "https://pub-2560100921b74ce5abdb317f63f7ede4.r2.dev"
+NEXT_PUBLIC_SITE_URL = "https://rimaafrica.com"
+NEXT_PUBLIC_WHATSAPP_NUMBER = "254714728554"
+NEXT_PUBLIC_CONTACT_EMAIL = "safaris@rimaafrica.com"
+NEXT_PUBLIC_CONTACT_PHONE = "+254714728554"
