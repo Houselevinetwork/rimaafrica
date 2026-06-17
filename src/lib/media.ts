@@ -8,7 +8,7 @@
  *   Add same to Cloudflare Pages environment variables
  */
 
-const BASE = process.env.NEXT_PUBLIC_R2_URL || "";
+const BASE = process.env.NEXT_PUBLIC_R2_URL || "https://pub-2560100921b74ce5abdb317f63f7ede4.r2.dev";
 
 function r2(filename: string): string {
   if (!BASE) return "";

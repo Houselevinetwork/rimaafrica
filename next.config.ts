@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_R2_URL: process.env.NEXT_PUBLIC_R2_URL || "https://pub-2560100921b74ce5abdb317f63f7ede4.r2.dev",
+  },
   // Cloudflare Pages compatibility
   // DO NOT use output:"export" — we need sitemap.ts and robots.ts to work
   // Cloudflare Pages supports Next.js App Router natively via @cloudflare/next-on-pages
