@@ -74,11 +74,10 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
     if (cur.video && !videoReady) return; // wait for video to load before dwelling
     timerRef.current = setTimeout(advance, 10000);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [seqIndex, videoReady, isMobile, advance, cur.video]);
+  }, [seqIndex, videoReady, advance, cur.video]);
 
   const openDropdown = useCallback(() => {
     if (formRef.current) {
@@ -214,8 +213,8 @@ export default function HeroSection() {
         {/* Layer 0 — Photo, instant */}
         <img className="h-photo" src={cur.photo} alt={`${cur.label} — Rima Africa Safaris`} />
 
-        {/* Layer 1 — Video, fades in (desktop only) */}
-        {!isMobile && cur.video && (
+        {/* Layer 1 — Video, fades in on top of the photo (all devices) */}
+        {cur.video && (
           <video
             key={seqIndex}
             className={`h-video ${videoReady && !fadeOut ? "on" : "off"}`}
