@@ -1,0 +1,3 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = { title:"Cookie Policy" };
+export default function CookiesPage() { return (<section className="section-wrapper"><div className="content-width max-w-2xl mx-auto" style={{ color:"var(--rima-gray)", lineHeight:1.8 }}><h1 className="font-serif font-light text-4xl mb-10" style={{ color:"var(--rima-dark)" }}>Cookie Policy</h1><p>We use cookies to improve your experience. Strictly necessary cookies are always active. Analytics cookies (Google Analytics 4) help us understand site usage. You may opt out of analytics cookies at any time.</p></div></section>); }
