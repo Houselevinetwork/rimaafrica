@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CONTINENT_GROUPS } from "@/data/destinations";
-import { r2Url } from "@/lib/utils";
+import { coverImages } from "@/lib/media";
 
 export default function TravelByCountry() {
   return (
@@ -40,7 +40,7 @@ function CountryCard({ slug, name, accent = "jungle" }: { slug: string; name: st
     <Link href={`/destinations/${slug}`} className="continent-card group block">
       <div className="relative w-full overflow-hidden bg-rima-jungle-dark" style={{ aspectRatio: "231/296" }}>
         <div className="absolute inset-0 bg-img bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-          style={{ backgroundImage:`url(${r2Url(`destinations/${slug}/cover.jpg`)})` }} />
+          style={{ backgroundImage:`url(${coverImages[slug] || ""})` }} />
         <div className="absolute inset-0 img-overlay" />
         <div className="absolute bottom-0 left-0 right-0 px-2 pb-4 text-center">
           <p className="text-white font-sans font-light" style={{ fontSize:"1.5rem", lineHeight:1.4 }}>{name}</p>

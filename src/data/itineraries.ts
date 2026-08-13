@@ -1,11 +1,13 @@
 import type { Itinerary } from "@/types";
-import { R2 } from "@/lib/media";
+import { R2, r2 } from "@/lib/media";
 
 // ─────────────────────────────────────────────────────────────
 // RIMA AFRICA — Itinerary Catalog
 // 40 itineraries — 10 per destination (Kenya, Uganda, Tanzania, Rwanda)
-// Images use existing R2 placeholder assets per country until the
-// itinerary-specific photo batch (see media naming convention) lands.
+// Kenya's 10 itineraries use real, non-duplicated photos from the
+// 97-image Kenya batch (flat at R2 bucket root) — see r2-manifest/
+// for allocation. Uganda/Tanzania/Rwanda still use single shared
+// placeholders pending a dedicated photo batch for those countries.
 // ─────────────────────────────────────────────────────────────
 
 export const ITINERARIES: Itinerary[] = [
@@ -19,8 +21,12 @@ export const ITINERARIES: Itinerary[] = [
     days: 3,
     destination: "Kenya",
     fromPrice: 1450,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-maasai-mara-lion-vehicle-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-maasai-mara-buffalo-herd-01.jpg"),
+      r2("kenya-maasai-mara-impala-herd-01.jpg"),
+    ],
     summary: "Three days in the Maasai Mara on a shared group safari — the most affordable way to experience Kenya's best-known reserve, with sunrise and sunset game drives and a scenic Rift Valley crossing.",
     bestFor: "Budget travellers, solo travellers, friends, first-time safari visitors",
     highlights: [
@@ -42,8 +48,12 @@ export const ITINERARIES: Itinerary[] = [
     days: 3,
     destination: "Kenya",
     fromPrice: 3200,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-maasai-mara-hot-air-balloon-closeup-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-maasai-mara-rima-africa-vehicle-picnic-01.jpg"),
+      r2("kenya-maasai-mara-rima-africa-vehicle-picnic-02.jpg"),
+    ],
     summary: "Three days in the Maasai Mara by light aircraft — skip the road transfer and maximise time on game drives in a luxury tented camp, with dawn and dusk safaris and an optional hot air balloon at sunrise.",
     bestFor: "Luxury travellers, couples, honeymooners, photographers",
     highlights: [
@@ -65,8 +75,12 @@ export const ITINERARIES: Itinerary[] = [
     days: 4,
     destination: "Kenya",
     fromPrice: 4600,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-amboseli-elephant-kilimanjaro-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-maasai-mara-giraffe-pair-01.jpg"),
+      r2("kenya-maasai-mara-elephant-tusker-01.jpg"),
+    ],
     summary: "Four days combining two of Kenya's most iconic reserves by light aircraft — the Maasai Mara's Big Five game drives and Amboseli's elephant herds beneath Mount Kilimanjaro.",
     bestFor: "Luxury travellers, honeymooners, time-conscious visitors, wildlife photographers",
     highlights: [
@@ -89,8 +103,12 @@ export const ITINERARIES: Itinerary[] = [
     days: 6,
     destination: "Kenya",
     fromPrice: 3900,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-amboseli-elephant-herd-kilimanjaro-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-lake-nakuru-rhino-pair-01.jpg"),
+      r2("kenya-maasai-mara-elephant-sunset-01.jpg"),
+    ],
     summary: "Six days through four of Kenya's classic safari destinations — elephants beneath Kilimanjaro in Amboseli, rhino tracking at Lake Nakuru, a boat safari on Lake Naivasha, and Big Five game drives in the Maasai Mara.",
     bestFor: "First-time visitors to Kenya, wildlife enthusiasts, families and couples, photography safaris",
     highlights: [
@@ -115,8 +133,12 @@ export const ITINERARIES: Itinerary[] = [
     days: 4,
     destination: "Kenya",
     fromPrice: 2600,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-lake-nakuru-rhino-walking-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-lake-nakuru-rhino-pair-02.jpg"),
+      r2("kenya-lake-nakuru-flamingo-zebra-01.jpg"),
+    ],
     summary: "Four days across the Rift Valley lakes and the Maasai Mara — rhino tracking at Lake Nakuru, an optional boat safari at Lake Naivasha, and exceptional Big Five game viewing in the Mara.",
     bestFor: "First-time safari travellers, couples, families, wildlife photographers",
     highlights: [
@@ -139,8 +161,14 @@ export const ITINERARIES: Itinerary[] = [
     days: 3,
     destination: "Kenya",
     fromPrice: 1850,
-    image: R2.kenyaPhoto,
+    // No Aberdare/Ol Pejeta photos exist in the current batch — generic lodge/accommodation
+    // filler used instead of misrepresenting the destination with Mara-tagged wildlife shots.
+    image: r2("kenya-lodge-dusk-exterior-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-lodge-pool-thatched-cottages-01.jpg"),
+      r2("kenya-safari-camp-tented-cottages-01.jpg"),
+    ],
     summary: "Three days in Kenya's central highlands — a night overlooking a floodlit waterhole in Aberdare, followed by rhino conservation and Big Five game drives at Ol Pejeta.",
     bestFor: "Wildlife lovers, families, conservation enthusiasts",
     highlights: [
@@ -162,8 +190,14 @@ export const ITINERARIES: Itinerary[] = [
     days: 3,
     destination: "Kenya",
     fromPrice: 1950,
-    image: R2.kenyaPhoto,
+    // No Samburu photos exist in the current batch — generic lodge/accommodation filler
+    // used instead of misrepresenting the destination with Mara-tagged wildlife shots.
+    image: r2("kenya-lodge-aerial-cottages-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-lodge-bedroom-interior-01.jpg"),
+      r2("kenya-lodge-daybed-lounge-01.jpg"),
+    ],
     summary: "Three days in Samburu National Reserve — home to species found nowhere else in Kenya, from reticulated giraffe to Grevy's zebra, along the Ewaso Nyiro River.",
     bestFor: "Returning safari travellers, wildlife photographers, adventure seekers",
     highlights: [
@@ -185,8 +219,15 @@ export const ITINERARIES: Itinerary[] = [
     days: 3,
     destination: "Kenya",
     fromPrice: 1700,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-amboseli-elephants-interacting-kilimanjaro-01.jpg"),
     video: R2.kenyaVideo,
+    // Only 4 Amboseli-tagged photos exist, split across 3 itineraries — 2nd gallery
+    // slot here falls back to generic lodge filler rather than reusing another
+    // itinerary's Amboseli shot or a mismatched Mara-tagged one.
+    gallery: [
+      r2("kenya-amboseli-lodge-kilimanjaro-01.jpg"),
+      r2("kenya-lodge-pool-colonial-01.jpg"),
+    ],
     summary: "Three days in Amboseli National Park — Kenya's finest elephant viewing set against the towering backdrop of Mount Kilimanjaro.",
     bestFor: "Elephant lovers, photographers, couples and first-time safari travellers",
     highlights: [
@@ -208,8 +249,14 @@ export const ITINERARIES: Itinerary[] = [
     days: 2,
     destination: "Kenya",
     fromPrice: 1150,
-    image: R2.kenyaPhoto,
+    // No Ol Pejeta photos exist in the current batch — generic lodge/accommodation filler
+    // used instead of misrepresenting the destination with Mara-tagged wildlife shots.
+    image: r2("kenya-safari-camp-tented-exterior-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-lodge-aerial-pool-01.jpg"),
+      r2("kenya-geothermal-spa-pools-01.jpg"),
+    ],
     summary: "Two days in Ol Pejeta Conservancy — a compact introduction to Kenya's leading rhino conservation story, with Big Five game drives and a chance to meet the world's last northern white rhinos.",
     bestFor: "First-time safari travellers, wildlife enthusiasts, families and couples",
     highlights: [
@@ -230,8 +277,13 @@ export const ITINERARIES: Itinerary[] = [
     days: 7,
     destination: "Kenya",
     fromPrice: 5200,
-    image: R2.kenyaPhoto,
+    image: r2("kenya-maasai-mara-maasai-warriors-walking-01.jpg"),
     video: R2.kenyaVideo,
+    gallery: [
+      r2("kenya-maasai-mara-maasai-walk-guests-01.jpg"),
+      r2("kenya-maasai-mara-bush-dining-01.jpg"),
+      r2("kenya-maasai-mara-bush-breakfast-01.jpg"),
+    ],
     summary: "Seven days in the Maasai Mara — the world's greatest wildlife reserve — with game drives at dawn and dusk, Maasai village visits, and a hot air balloon over the plains.",
     bestFor: "First-time safari, couples, wildlife photography",
     highlights: [

@@ -5,7 +5,7 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { DESTINATIONS, getDestination } from "@/data/destinations";
 import { getItinerariesByCountry } from "@/data/itineraries";
-import { destinationMedia, coverImages } from "@/lib/media";
+import { destinationMedia } from "@/lib/media";
 import DestinationSchema from "@/components/seo/DestinationSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
@@ -136,14 +136,13 @@ export default async function DestinationPage({ params }: Props) {
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "2rem" }}>
               {related.map(it => {
-                const itCover = coverImages[it.destination.toLowerCase().replace(/ /g, "-")] || "";
                 return (
                   <Link key={it.slug} href={`/itineraries/${it.slug}`}
                     style={{ display: "block", textDecoration: "none" }}>
                     <div style={{
                       aspectRatio: "3/2", overflow: "hidden", marginBottom: "1rem",
-                      background: itCover
-                        ? `url(${itCover}) center/cover`
+                      background: it.image
+                        ? `url(${it.image}) center/cover`
                         : "var(--rima-jungle-dark)",
                     }} />
                     <p style={{ fontSize: "0.6rem", letterSpacing: "0.16em", color: "var(--rima-gold)", marginBottom: "0.3rem" }}>

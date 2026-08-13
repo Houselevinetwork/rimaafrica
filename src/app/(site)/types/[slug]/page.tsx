@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { EXPERIENCE_TYPES } from "@/data/destinations";
 import { ITINERARIES } from "@/data/itineraries";
-import { typeMedia, coverImages } from "@/lib/media";
+import { typeMedia } from "@/lib/media";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
@@ -91,13 +91,12 @@ export default async function TypeSlugPage({ params }: { params: Promise<{ slug:
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "2rem" }}>
               {related.map(it => {
-                const img = coverImages[it.destination.toLowerCase().replace(/ /g,"-")] || "";
                 return (
                   <Link key={it.slug} href={`/itineraries/${it.slug}`}
                     style={{ display: "block", textDecoration: "none" }}>
                     <div style={{
                       aspectRatio: "3/2", overflow: "hidden", marginBottom: "1rem",
-                      background: img ? `url(${img}) center/cover` : "var(--rima-jungle-dark)",
+                      background: it.image ? `url(${it.image}) center/cover` : "var(--rima-jungle-dark)",
                     }} />
                     <p style={{ fontSize: "0.6rem", letterSpacing: "0.16em", color: "var(--rima-gold)", marginBottom: "0.3rem" }}>
                       {it.days} DAYS · {it.destination.toUpperCase()}

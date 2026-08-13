@@ -55,6 +55,7 @@ export interface Itinerary {
   fromPrice: number;
   image: string;
   video?: string;
+  gallery?: string[];
   summary: string;
   bestFor: string;
   highlights: string[];

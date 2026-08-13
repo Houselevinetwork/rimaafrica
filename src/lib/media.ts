@@ -10,7 +10,7 @@
 
 const BASE = process.env.NEXT_PUBLIC_R2_URL || "https://pub-2560100921b74ce5abdb317f63f7ede4.r2.dev";
 
-function r2(filename: string): string {
+export function r2(filename: string): string {
   if (!BASE) return "";
   return `${BASE}/${filename}`;
 }
@@ -137,7 +137,7 @@ export const continentImages = {
 // ─────────────────────────────────────────────────────────────
 
 export const coverImages: Record<string, string> = {
-  kenya:    R2.kenyaPhoto,
+  kenya:    r2("kenya-rima-africa-vehicle-branding-01.jpg"), // distinct brand shot, real Kenya batch photo
   uganda:   R2.gorillaPhoto,
   tanzania: R2.ngorongoroPhoto,   // Ngorongoro Crater
   rwanda:   R2.goldenMonkeyPhoto, // Golden Monkey

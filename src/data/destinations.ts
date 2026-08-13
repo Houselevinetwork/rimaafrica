@@ -1,4 +1,53 @@
 import type { Destination, ExperienceType, ContinentGroup } from "@/types";
+import { r2 } from "@/lib/media";
+
+// Kenya destination gallery — general Mara wildlife/action variety and Nairobi shots
+// not already used as an itinerary hero/gallery image (see r2-manifest for the full
+// 96-image batch allocation). Zero overlap with any itinerary image.
+const KENYA_GALLERY_IMAGES = [
+  "kenya-maasai-mara-zebra-oryx-waterhole-01.jpg",
+  "kenya-maasai-mara-safari-vehicle-impala-chase-01.jpg",
+  "kenya-maasai-mara-cheetah-resting-01.jpg",
+  "kenya-maasai-mara-buffalo-pair-01.jpg",
+  "kenya-maasai-mara-lioness-road-01.jpg",
+  "kenya-maasai-mara-buffalo-grass-01.jpg",
+  "kenya-maasai-mara-cheetah-sitting-01.jpg",
+  "kenya-maasai-mara-cheetah-cub-01.jpg",
+  "kenya-maasai-mara-lioness-cub-carry-01.jpg",
+  "kenya-maasai-mara-cheetah-cub-02.jpg",
+  "kenya-maasai-mara-lioness-pair-bush-01.jpg",
+  "kenya-maasai-mara-cheetah-pair-01.jpg",
+  "kenya-savanna-elephant-golden-grass-01.jpg",
+  "kenya-maasai-mara-cheetah-kill-01.jpg",
+  "kenya-maasai-mara-cheetah-kill-02.jpg",
+  "kenya-maasai-mara-cheetah-kill-03.jpg",
+  "kenya-maasai-mara-cheetah-kill-04.jpg",
+  "kenya-maasai-mara-cheetah-kill-05.jpg",
+  "kenya-maasai-mara-cheetah-kill-06.jpg",
+  "kenya-maasai-mara-thomsons-gazelle-01.jpg",
+  "kenya-maasai-mara-lion-resting-shade-01.jpg",
+  "kenya-maasai-mara-elephant-tusker-02.jpg",
+  "kenya-maasai-mara-safari-vehicle-elephants-01.jpg",
+  "kenya-maasai-mara-safari-vehicle-elephants-02.jpg",
+  "kenya-maasai-mara-topi-antelope-01.jpg",
+  "kenya-maasai-mara-topi-antelope-02.jpg",
+  "kenya-maasai-mara-lions-pair-rock-01.jpg",
+  "kenya-maasai-mara-cheetah-pair-resting-01.jpg",
+  "kenya-maasai-mara-buffalo-closeup-01.jpg",
+  "kenya-maasai-mara-migration-wildebeest-balloon-01.jpg",
+  "kenya-maasai-mara-gazelle-grass-01.jpg",
+  "kenya-maasai-mara-giraffe-standing-01.jpg",
+  "kenya-maasai-mara-lions-vehicles-road-01.jpg",
+  "kenya-maasai-mara-cheetah-pair-road-01.jpg",
+  "kenya-maasai-mara-buffalo-grazing-01.jpg",
+  "kenya-maasai-mara-warthog-01.jpg",
+  "kenya-maasai-mara-elephant-walking-01.jpg",
+  "kenya-warthog-pair-01.jpg",
+  "kenya-maasai-mara-lioness-road-02.jpg",
+  "kenya-maasai-mara-guests-guide-group-01.jpg",
+  "kenya-nairobi-national-park-giraffe-skyline-01.jpg",
+  "kenya-nairobi-national-park-giraffe-skyline-02.jpg",
+].map(r2);
 
 // ── CONTINENT GROUPS ──────────────────────────────────────────
 // East Africa: Kenya, Uganda, Tanzania, Rwanda
@@ -31,7 +80,7 @@ export const DESTINATIONS: Destination[] = [
     fromPrice: 4500,
     currency: "USD",
     aboutText: "Kenya is the heartland of the African safari. From the sweeping grasslands of the Maasai Mara — where the Great Migration crosses each year — to the elephant-filled plains of Amboseli beneath Kilimanjaro, Kenya delivers wildlife encounters of extraordinary intimacy.",
-    galleryImages: [],
+    galleryImages: KENYA_GALLERY_IMAGES,
     whereToGo: [],
     whereToStay: [],
     itineraries: [
